@@ -11,6 +11,6 @@ for i in range(1, n+1):
 for i in range(1, m+1):
     word = input()
     if word in indicies:
-        print(indicies[word])
+        print(*indicies[word])
     else:
         print(-1)
