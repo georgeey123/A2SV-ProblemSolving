@@ -7,7 +7,16 @@ class Solution:
             graph[start].append(end)
             graph[end].append(start)
 
-        for i in graph.items():
-            if len(i[1]) > 1:
-                return i[0]
+        def dfs(vertex, visited):
+            if vertex in visited:
+                return
+            if len(graph[vertex]) > 1:
+                return vertex
+
+            visited.add(vertex)
+            for neighbour in graph[vertex]:
+                if dfs(neighbour, visited):
+                    return dfs(neighbour, visited)
+
+        return dfs(edges[0][0], set())        
  
